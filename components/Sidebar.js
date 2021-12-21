@@ -11,13 +11,15 @@ import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import useSpotify from "../hooks/useSpotify";
+import { useRecoilState } from "recoil";
+import { playlistIdState } from "../atoms/playlistAtom";
 
 function Sidebar() {
   // add session provider in app.js
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
-  const [playlistId, setPlaylistId] = useState(null);
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
   console.log("Playlist id ", playlistId);
 
@@ -35,7 +37,7 @@ function Sidebar() {
 
   const router = useRouter();
   return (
-    <div className="text-gray-500 p-5 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide w-72">
+    <div className="text-gray-400 p-5 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide w-68 text-sm">
       <div className="pb-6 cursor-pointer">
         <Image
           src={"/logo.png"}

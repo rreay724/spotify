@@ -37,8 +37,11 @@ function Sidebar() {
 
   const router = useRouter();
   return (
-    <div className="text-gray-400 p-5 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide w-68 text-sm">
-      <div className="pb-6 cursor-pointer">
+    <div
+      className=" text-gray-400 p-5 border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide sm:max-w-[12rem] 
+    text-sm lg:text-sm lg:max-w-[15rem] hidden md:inline-block"
+    >
+      <div className="pb-6 cursor-pointer ">
         <Image
           src={"/logo.png"}
           width={140}
@@ -50,12 +53,12 @@ function Sidebar() {
       </div>
       <div className="space-y-4">
         <div className="space-y-4">
-          <button
+          {/* <button
             className="flex items-center space-x-2 hover:text-white"
             onClick={() => signOut()}
           >
             Log out
-          </button>
+          </button> */}
           <button className="flex items-center space-x-2  hover:text-white">
             <HomeIcon className="h-5 w-5" />
             <p>Home</p>
@@ -90,7 +93,7 @@ function Sidebar() {
           <p
             onClick={() => setPlaylistId(playlist.id)}
             key={playlist.id}
-            className="cursor-pointer hover:text-white"
+            className="cursor-pointer hover:text-white truncate"
           >
             {playlist.name}
           </p>
